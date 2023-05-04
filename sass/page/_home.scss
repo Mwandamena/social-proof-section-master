@@ -1,0 +1,205 @@
+body {
+    @include respond(phone){
+        background: url(../images/bg-pattern-top-mobile.svg) left top no-repeat, url(../images/bg-pattern-bottom-mobile.svg) bottom right no-repeat;
+    }
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0 auto;
+    max-width: 1220px;
+    padding: 2rem 2rem 2rem 2rem;
+    grid-template-areas: 
+        "header header header header header header header header header header header header"
+        "test test test test test test test test test test test test"
+        "footer footer footer footer footer footer footer footer footer footer footer footer"
+    ;
+
+    @include respond(tablet){
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: 
+        "header header header header header header"
+        "test test test test test test"
+        "footer footer footer footer footer footer"
+    }
+
+    @include respond(smallphone){
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: 
+            "header header"
+            "test test"
+            "footer footer"
+        ;
+    }
+
+}
+
+.main-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    grid-area: header;
+    margin-bottom: 4rem;
+
+    @include respond(tablet){
+        grid-template-columns: auto;
+        gap: 3rem;
+    }
+}
+
+.main-section-text {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    width: 80%;
+    h1 {
+        font-size: clamp(2rem, 3rem, 4rem);
+        line-height: .9;
+        color: var(--magenta);
+        font-weight: var(--fw-700);
+
+        @include respond(phone){
+            font-size: 2rem;
+        }
+    }
+
+    p {
+        color: var(--dark-grayish-magenta); 
+    }
+
+    @include respond(phone){
+        text-align: center;
+        width: 100%;
+    }
+
+    @include respond(smallphone){
+        text-align: center;
+    }
+}
+
+.rating-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .rating-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        max-width: 25em;
+        border-radius: 10px;
+        padding: 1rem;
+        color: var(--magenta);
+        background-color: var(--light-grayish-magenta);
+        font-weight: var(--fw-700);
+
+        img {
+            width: 15px;
+            height: 15px;
+        }
+
+        @include respond(phone){
+            text-align: center;
+            gap: 0;
+            flex-direction: column;
+            max-width: 100%;
+        }
+    
+    }
+    .rating-card:nth-child(2){
+        margin-left: auto;
+        margin-right: auto;
+
+        @include respond(phone){
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    .rating-card:nth-child(3){
+        margin-left: auto;
+
+        @include respond(phone){
+            margin-left: 0;
+        }
+    }
+}
+
+.testimonial {
+    grid-area: test;
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: minmax(25em, 1fr);
+    gap: 2rem;
+
+    @include respond(tablet){
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .testimonial-card {
+        max-width: 30em;
+        padding: 2rem;
+        background-color: var(--magenta);
+        color: white;
+        border-radius: 6px;
+
+        @include respond(tablet){
+            max-width: 100%;
+        }
+
+        .description {
+            margin-top: 2.2rem;
+        }
+        .profile {
+            display: flex;
+            flex-direction: row;
+            gap: 1.3rem;
+
+
+            img {
+                width: 3em;
+                height: 3em;
+                border-radius: 50%;
+            }
+
+            .profile-text {
+                p:nth-child(2) {
+                    color: var(--soft-pink);
+                }
+            }
+        }
+    }
+
+    .testimonial-card:nth-child(1){
+        align-self: start;
+
+        @include respond(phone){
+            align-self: start;
+        }
+    }
+
+    .testimonial-card:nth-child(2){
+        align-self: center;
+
+        @include respond(phone){
+            align-self: start;
+        }
+    }
+
+    .testimonial-card:nth-child(3){
+        align-self: end;
+
+        @include respond(phone){
+            align-self: start;
+        }
+    }
+}
+
+footer {
+    grid-area: footer;
+    font-size: 1rem;
+}
